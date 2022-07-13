@@ -31,10 +31,18 @@ def GetValideHand(game,piece):
             if game[0][piece[2]][piece[3]+k]==0:
                 ValideHand.append([[piece[2]],[piece[3]+k]])
             else:
-                if piece in game[5-game[0]]:
+                if piece in game[5-piece[0]]:
                    ValideHand.append([[piece[2]],[piece[3]+k]])
                 break
             
     for l in range(1,7):
         if(piece[3]-l)>0:
+            if game[0][piece[2]][piece[3]-l]==0:
+                ValideHand.append([piece[2],piece[3]-l])
+            else:
+                if piece in game[5-piece[0]]:
+                    ValideHand.append([piece[2],piece[3]-l])
+                break
+    
+    return ValideHand
             

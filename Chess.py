@@ -134,8 +134,8 @@ def BlackInitialListe():
     for n in range(2,6,3):
         ListPiece.append(CreatePiece(2,4,7,n))
     
-    ListPiece.append(CreatePiece(2,5,7,4))
-    ListPiece.append(CreatePiece(2,6,7,3))
+    ListPiece.append(CreatePiece(2,5,7,3))
+    ListPiece.append(CreatePiece(2,6,7,4))
     
     return ListPiece
 
@@ -172,14 +172,14 @@ def PiecePrint(Piece):
     if Piece==2:
         return "R"
     if Piece==3:
-        return "K"
+        return "N"
     if Piece==4:
         return "B"
     if Piece==5:
         return "Q"
     
     if Piece==6:
-        return "S"
+        return "K"
     
     return " "
 
@@ -213,6 +213,10 @@ def PrintGame(game):
     PrintBoard(game[0])
 
 def GetValideHand(game,piece):
+    #print(piece)
     if piece[1]==1:
-        Pawn.GetValideHand(game,piece)
+        return Pawn.GetValideHand(game,piece)
+    if piece[1]==2:
+        return Rock.GetValideHand(game, piece)
+        
     
