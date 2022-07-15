@@ -20,7 +20,7 @@ def GetValideHand(game,piece):
               ValideHand.append([piece[2]+2,piece[3]])
               
         for black in game[4]:
-            if (black[2]==piece[2]+1 and black[3]==piece[3]+1) or (black[2]==piece[2]-1 and black[3]==piece[3]+1) :
+            if (black[2]==piece[2]+1 and black[3]==piece[3]+1) or (black[2]==piece[2]+1 and black[3]==piece[3]-1) :
                 ValideHand.append([black[2],black[3]])
     
     #Black turns 

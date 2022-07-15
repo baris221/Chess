@@ -31,6 +31,8 @@ import copy
 sys.path.append("./Piece")
 import Pawn
 import Rock
+import Bishop
+import Knight
 
 def GetCopyGame(game):
     """game -> game
@@ -218,5 +220,9 @@ def GetValideHand(game,piece):
         return Pawn.GetValideHand(game,piece)
     if piece[1]==2:
         return Rock.GetValideHand(game, piece)
+    if piece[1]==3:
+        return Knight.GetValideHand(game, piece)
+    if piece[1]==4:
+        return Bishop.GetValideHand(game, piece)
         
     
