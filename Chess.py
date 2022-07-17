@@ -101,10 +101,10 @@ def CreatePiece(Player,IdPiece,x,y):
 
 def PlacePiecesBoard(board,InitialWhiteList,InitialBlackList):
     for whitepiece in InitialWhiteList:
-        board[whitepiece[2]][whitepiece[3]]=whitepiece[1]
+        board[whitepiece[2]][whitepiece[3]]=[whitepiece[0],whitepiece[1]]
         
     for blackpiece in InitialBlackList:
-        board[blackpiece[2]][blackpiece[3]]=blackpiece[1]
+        board[blackpiece[2]][blackpiece[3]]=[blackpiece[0],blackpiece[1]]
     
     
 
@@ -119,7 +119,6 @@ def WhiteInitialListe():
         ListPiece.append(CreatePiece(1,3,0,m))
     for n in range(2,6,3):
         ListPiece.append(CreatePiece(1,4,0,n))
-    
     ListPiece.append(CreatePiece(1,5,0,3))
     ListPiece.append(CreatePiece(1,6,0,4))
     
@@ -148,7 +147,7 @@ def InitialGame():
     for i in range(8):
         board.append([])
         for j in range(8):
-            board[i].append(0)
+            board[i].append([0,0])
     #Place the pieces
     game.append(board)
     
@@ -193,17 +192,20 @@ def PrintBoard(board):
     print('|')
 
     for i in range(8):
-        print("---",end="")
+        print("\033[1;0m---",end="")
         for j in range(8):
-            print("----",end="")
+            print("\033[1;0m----",end="")
         print("")
         
-        print("{} |".format(i+1), end='')
+        print("\033[1;0m{} |".format(i+1), end='')
         for m in range(8):
-            if board[i][m] != 0:
-                print(" {} |".format(PiecePrint(board[i][m])),end ='')
+            if board[i][m][1] != 0:
+                if board[i][m][0]==1:
+                    print("\033[1;0m {} |".format(PiecePrint(board[i][m][1])),end ='')
+                else:
+                    print("\033[1;30m {} |".format(PiecePrint(board[i][m][1])),end ='')
             else:
-                print(" {} |".format(" "),end ='')
+                print("\033[1;0m {} |".format(" "),end ='')
         
         print("")
   
@@ -218,11 +220,15 @@ def GetValideHand(game,piece):
     #print(piece)
     if piece[1]==1:
         return Pawn.GetValideHand(game,piece)
-    if piece[1]==2:
-        return Rock.GetValideHand(game, piece)
-    if piece[1]==3:
-        return Knight.GetValideHand(game, piece)
-    if piece[1]==4:
-        return Bishop.GetValideHand(game, piece)
-        
+    # if piece[1]==2:
+    #     return Rock.GetValideHand(game, piece)
+    # if piece[1]==3:
+    #     return Knight.GetValideHand(game, piece)
+    # if piece[1]==4:
+    #     return Bishop.GetValideHand(game, piece)
+    
+def playHand(game,piece,pos):
+    game[5-piece[0]].remove(piece)
+    newpiece=CreatePiece(piece[0],piece[1],pos[0],pos[1])
+    game[5-piece[0]].append(newpiece)
     

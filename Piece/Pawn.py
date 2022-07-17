@@ -13,10 +13,10 @@ def GetValideHand(game,piece):
     #White turns
     if(piece[0]==1):
         if(piece[2]<7):           
-           if(game[0][piece[2]+1][piece[3]]==0):
+           if(game[0][piece[2]+1][piece[3]][0]==0):
               ValideHand.append([piece[2]+1,piece[3]])
               
-        if(piece[2]==1 and game[0][piece[2]+2][piece[3]]==0 and game[0][piece[2]+1][piece[3]]==0):
+        if(piece[2]==1 and game[0][piece[2]+2][piece[3]][0]==0 and game[0][piece[2]+1][piece[3]][0]==0):
               ValideHand.append([piece[2]+2,piece[3]])
               
         for black in game[4]:
@@ -26,10 +26,10 @@ def GetValideHand(game,piece):
     #Black turns 
     if(piece[0]==2):
         if(piece[2]>0):
-            if(game[0][piece[2]-1][piece[3]]==0):
+            if(game[0][piece[2]-1][piece[3]][0]==0):
                 ValideHand.append([piece[2]-1,piece[3]])
                 
-            if(piece[2]==6 and game[0][piece[2]-2][piece[3]]==0 and game[0][piece[2]-1][piece[3]]==0):
+            if(piece[2]==6 and game[0][piece[2]-2][piece[3]][0]==0 and game[0][piece[2]-1][piece[3]][0]==0):
                 ValideHand.append([piece[2]-2,piece[3]])
                 
             for white in game[3]:
