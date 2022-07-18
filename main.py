@@ -10,12 +10,12 @@ import Chess
 game=Chess.InitialGame()
 
 
-Chess.PrintBoard(game[0])
-#Chess.PrintGame(game)
+#Chess.PrintBoard(game[0])
+Chess.PrintGame(game)
 
 for piece in game[3]:
-    print(Chess.GetValideHand(game,piece))
-    
-for piece in game[4]:
-    print(Chess.GetValideHand(game,piece))
+    Chess.printValideHand(game,piece)
+    #print(Chess.GetValideHand(game,piece))
+# for piece in game[4]:
+#     print(Chess.GetValideHand(game,piece))
     

@@ -12,7 +12,7 @@ def GetValideHand(game,piece):
     
     for mouv in MouvPosible:
         if piece[2]+mouv[0] <=7 and piece[2]+mouv[0] >=0 and piece[3]+mouv[1] <=7 and piece[3]+mouv[1] >=0:
-            if game[0][piece[2]+mouv[0]][piece[3]+mouv[1]]==0 or game[0][piece[2]+mouv[0]][piece[3]+mouv[1]]==(3-piece[0]):
-                ValideHandappend([piece[2]+mouv[0],piece[3]+mouv[1]])
+            if game[0][piece[2]+mouv[0]][piece[3]+mouv[1]][0]==0 or game[0][piece[2]+mouv[0]][piece[3]+mouv[1]][0]==(3-piece[0]):
+                ValideHand.append([piece[2]+mouv[0],piece[3]+mouv[1]])
     
     return ValideHand
