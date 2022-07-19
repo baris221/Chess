@@ -34,6 +34,7 @@ import Rock
 import Bishop
 import Knight
 import Quenn
+import King
 
 def GetCopyGame(game):
     """game -> game
@@ -229,17 +230,25 @@ def GetValideHand(game,piece):
         return Bishop.GetValideHand(game, piece)
     if piece[1]==5:
         return Quenn.GetValideHand(game, piece)
+    if piece[1]==6:
+        return King.GetValideHand(game, piece)
     return []
 def printValideHand(game,piece):
     Lettre=["A","B","C","D","E","F","G","H"]
     Number=[1,2,3,4,5,6,7,8]
     P=["Pawn","Rock","Knight","Bishop","Quenn","King"]
-    print(f'The piece is {P[piece[1]-1]} on {Lettre[piece[2]]}{Number[piece[3]]}')
+    print(f'The piece is {P[piece[1]-1]} on {Lettre[piece[3]]}{Number[piece[2]]}')
     for pos in GetValideHand(game, piece):
-        print(f'You can play your piece on {Lettre[pos[0]]}{Number[pos[1]]}')
+        print(f'You can play your piece on {Lettre[pos[1]]}{Number[pos[0]]}')
 
 def playHand(game,piece,pos):
-    game[5-piece[0]].remove(piece)
+    game[piece[0]+2].remove(piece)
+    game[0][piece[2]][piece[3]]=(0,0)
     newpiece=CreatePiece(piece[0],piece[1],pos[0],pos[1])
-    game[5-piece[0]].append(newpiece)
-    
+    game[piece[0]+2].append(newpiece)
+    if game[0][pos[0]][pos[1]][0]==(5-piece[0]):
+        ennemy=CreatePiece(game[0][pos[0]][pos[1]][0],game[0][pos[0]][pos[1]][1],pos[0],pos[1])
+        game[5-piece[0]].remove(ennemy)
+        game[0][pos[0]][pos[1]]=(0,0)
+    game[0][pos[0]][pos[1]]=(newpiece[0],newpiece[1])
+
