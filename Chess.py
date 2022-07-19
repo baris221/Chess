@@ -36,6 +36,9 @@ import Knight
 import Quenn
 import King
 
+player1=None
+player2=None
+
 def GetCopyGame(game):
     """game -> game
     Return copy of the game"""
@@ -251,4 +254,11 @@ def playHand(game,piece,pos):
         game[5-piece[0]].remove(ennemy)
         game[0][pos[0]][pos[1]]=(0,0)
     game[0][pos[0]][pos[1]]=(newpiece[0],newpiece[1])
+    ChangePlayer(game)
+
+def handChoice(game):
+    if game[1]==1:
+        return player1.handChoice(game)
+    if game[1]==2:
+        return player2.handChoice(game)
 
