@@ -20,5 +20,8 @@ for piece in game[4]:
     Chess.printValideHand(game,piece)
     
 def part(game):
-    [piece,pos]=Chess.handChoice(game)
-    Chess.playHand(game,piece,pos)
+    cpt=0
+    while(Chess.endGame(game) and cpt<100):
+      [piece,pos]=Chess.handChoice(game)
+      Chess.playHand(game,piece,pos)
+      cpt=cpt+1

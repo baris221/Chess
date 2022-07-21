@@ -261,4 +261,9 @@ def handChoice(game):
         return player1.handChoice(game)
     if game[1]==2:
         return player2.handChoice(game)
+    
+def endGame(game):
+    for piece in game[2+game[0]]:
+        if piece[1]==6:
+            return (King.GetValideHand(game, piece)==[]) and (King.isOnCheck(game, piece))
 
